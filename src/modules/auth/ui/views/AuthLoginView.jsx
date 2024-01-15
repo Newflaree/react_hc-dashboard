@@ -7,9 +7,17 @@ import {
 } from '@mui/material';
 
 
-export const AuthLoginView = () => {
+export const AuthLoginView = ({
+  onSubmitForm,
+  register,
+  handleSubmit,
+  errors,
+  reset,
+}) => {
   return (
-    <form>
+    <form
+      onSubmit={ handleSubmit( onSubmitForm ) }
+    >
       <TextField
         margin='normal'
         fullWidth
@@ -17,6 +25,11 @@ export const AuthLoginView = () => {
         type='email'
         autoComplete='email'
         autoFocus
+        { ...register( 'email', {
+          required: 'Este campo es obligatorio'
+        })}
+        error={ !!errors.email }
+        helperText={ errors.email?.message }
       />
 
       <TextField
@@ -26,9 +39,18 @@ export const AuthLoginView = () => {
         type='password'
         autoComplete='current-password'
         autoFocus
+        { ...register( 'password', {
+          required: 'Este campo es obligatorio'
+        })}
+        error={ !!errors.password }
+        helperText={ errors.password?.message }
       />
 
       <FormControlLabel
+        sx={{
+          py: 2,
+          ml: '1px'
+        }}
         control={
           <input
             type='checkbox'
@@ -43,6 +65,8 @@ export const AuthLoginView = () => {
         fullWidth
         variant='contained'
         sx={{
+          borderRadius: 4,
+          p: 1,
           bgcolor: 'primary',
           mt: 3,
           mb: 2
@@ -51,7 +75,7 @@ export const AuthLoginView = () => {
         Iniciar Sesión
       </Button>
 
-      <Grid container>
+      <Grid container mt={ 2 }>
         <Grid item xs>
           <Link href='#' variant='body1'>
             ¿Olvidaste tu contraseña?

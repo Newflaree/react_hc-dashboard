@@ -39,7 +39,7 @@ export const AuthLayout = ({ children }) => {
           }}
         >
           <Paper
-            elevation={ 3 }
+            elevation={ 8 }
             sx={{
               borderRadius: 4,
               width: {
@@ -67,6 +67,7 @@ export const AuthLayout = ({ children }) => {
               variant='h1'
               component='h1'
               sx={{
+                mt: 4,
                 fontSize: 40,
                 fontWeight: 'bold',
                 textAlign: 'center'
