@@ -1,9 +1,9 @@
-import { Typography } from '@mui/material';
+import { AppRouter } from './router';
 
 const App = () => {
   return (
     <div>
-      <Typography variant='h1'>App</Typography>
+      <AppRouter />
     </div>
   );
 }
