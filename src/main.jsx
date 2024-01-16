@@ -10,15 +10,19 @@ import { appTheme } from './theme';
 import App from './App.jsx'
 // Globals Styles
 import './styles.css'
+// Context
+import { UiProvider } from './context/ui';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={ appTheme }>
-        <CssBaseline /> 
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+    <UiProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={ appTheme }>
+          <CssBaseline /> 
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </UiProvider>
   </React.StrictMode>,
 )

@@ -1,10 +1,10 @@
 import { DashboardLayout } from '../ui/layouts';
-import { DashboardView } from '../ui/views';
+import { NarratorsView } from '../ui/views';
 
-export const DashboardPage = () => {
+export const NarratorsPage = () => {
   return (
     <DashboardLayout>
-      <DashboardView />
+      <NarratorsView />
     </DashboardLayout>
   );
 }

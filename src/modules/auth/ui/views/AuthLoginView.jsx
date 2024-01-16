@@ -75,8 +75,14 @@ export const AuthLoginView = ({
         Iniciar Sesión
       </Button>
 
-      <Grid container mt={ 2 }>
-        <Grid item xs>
+      <Grid
+        container
+        mt={ 2 }
+      >
+        <Grid
+          item
+          xs
+        >
           <Link href='#' variant='body1'>
             ¿Olvidaste tu contraseña?
           </Link>
