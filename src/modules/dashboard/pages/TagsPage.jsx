@@ -1,13 +1,13 @@
 // Layouts
 import { DashboardLayout } from '../ui/layouts';
 // Views
-import { NarratorsView } from '../ui/views';
+import { TagsView } from '../ui/views';
 
 
-export const NarratorsPage = () => {
+export const TagsPage = () => {
   return (
     <DashboardLayout>
-      <NarratorsView />
+      <TagsView />
     </DashboardLayout>
   );
 }

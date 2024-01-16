@@ -5,14 +5,14 @@ import {
 } from '@mui/material';
 
 
-export const DashboardView = () => {
+export const UsersView = () => {
   return (
     <Box
       p={ 7 }
       height='100vh'
     >
       <Typography variant='h1'>
-        DashboardView
+        UsersView
       </Typography>
     </Box>
   );

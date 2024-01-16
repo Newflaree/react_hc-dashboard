@@ -2,7 +2,7 @@
 import {
   ListItem,
   ListItemIcon,
-  ListItemText
+  Typography
 } from '@mui/material';
 
 
@@ -28,9 +28,14 @@ export const SidebarAvatar = () => {
           }}
         />
       </ListItemIcon>
-      <ListItemText
-        primary={ `Buen día, ${ 'nombre-de-usuario' }` }
-      />
+
+      <Typography
+        textAlign='center'
+        fontSize={ 20 }
+        fontWeight='bold'
+      >
+        { `Buen día, ${ 'nombre-de-usuario' }` }
+      </Typography>
     </ListItem>
   );
 }
