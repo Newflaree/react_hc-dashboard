@@ -1,19 +1,142 @@
+// React
+import { useState } from 'react';
 // Material UI
 import {
   Box,
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  TextareaAutosize,
   Typography
 } from '@mui/material';
 
 
 export const MessagesView = () => {
+  const [ userType, setUserType ] = useState( '' );
+  const [ message, setMessage ] = useState( '' );
+
+  const handleUserTypeChange = ( event ) => {
+    setUserType( event.target.value );
+  }
+
+  const handleMessageChange = ( event ) => {
+    setMessage( event.target.value );
+  }
+
+  const handleSendMessage = () => {
+    console.log( `Enviando mensaje de ${ userType }: ${ message }` );
+  }
+
   return (
     <Box
-      p={ 7 }
       height='100vh'
+      display='flex'
+      alignItems='center'
+      justifyContent='center'
     >
-      <Typography variant='h1'>
-        MessagesView
-      </Typography>
+      <Paper
+        elevation={ 4 }
+        sx={{ 
+          p: {
+            xs: 4,
+            md: 6
+          },
+          width: {
+            xs: 'calc( 100vw - 40px )',
+            md: 'calc( 1000px - 70px )'
+          },
+          borderRadius: 3
+        }}
+      >
+        <Grid
+          container
+          spacing={ 3 }
+        >
+          {/*Title*/}
+          <Grid
+            item
+            mb={ 8 }
+            xs={ 12 }
+          >
+            <Typography
+              mt={ 2 }
+              color='primary'
+              variant='h2'
+              component='h2'
+            >
+              Redactar Mensaje
+            </Typography>
+          </Grid>
+          {/*Title*/}
+
+          {/*FormControl*/}
+          <Grid
+            item
+            xs={ 12 }
+          >
+            <FormControl fullWidth>
+              <InputLabel>Tipo de Usuario</InputLabel>
+              <Select
+                labelId='user-type-label'
+                id='user-type'
+                value={ userType }
+                label='Topo de Usuario'
+                onChange={ handleUserTypeChange }
+              >
+                <MenuItem value='locutor'>Locutor</MenuItem>
+                <MenuItem value='usuario'>Usuario</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          {/*FormControl*/}
+
+          {/*TextArea*/}
+          <Grid
+            item
+            xs={ 12 }
+          >
+            <TextareaAutosize
+              minRows={ 10 }
+              placeholder='Escribe tu mensaje aquí...'
+              value={ message }
+              onChange={ handleMessageChange }
+              style={{
+                padding: '20px',
+                width: '100%',
+                borderRadius: 4,
+                resize: 'none'
+              }}
+            />
+          </Grid>
+          {/*TextArea*/}
+
+          <Grid
+            item
+            mt={ 3 }
+            xs={ 12 }
+          >
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={ handleSendMessage }
+              sx={{
+                borderRadius: 3,
+                p: 1,
+                width: {
+                  xs: '100%',
+                  md: '200px'
+                }
+              }}
+            >
+              Enviar Mensaje
+            </Button>
+          </Grid>
+        </Grid>
+      </Paper>
     </Box>
   );
 }

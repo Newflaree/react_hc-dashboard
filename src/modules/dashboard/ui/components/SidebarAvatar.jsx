@@ -34,7 +34,14 @@ export const SidebarAvatar = () => {
         fontSize={ 20 }
         fontWeight='bold'
       >
-        { `Buen día, ${ 'nombre-de-usuario' }` }
+        Buen día,
+      </Typography>
+      <Typography
+        textAlign='center'
+        fontSize={ 20 }
+        fontWeight='bold'
+      >
+        { 'nombre-de-usuario' }
       </Typography>
     </ListItem>
   );
