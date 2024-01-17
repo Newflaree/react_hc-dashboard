@@ -39,7 +39,7 @@ export const MessagesView = () => {
       justifyContent='center'
     >
       <Paper
-        elevation={ 4 }
+        elevation={ 8 }
         sx={{ 
           p: {
             xs: 4,
@@ -49,7 +49,7 @@ export const MessagesView = () => {
             xs: 'calc( 100vw - 40px )',
             md: 'calc( 1000px - 70px )'
           },
-          borderRadius: 3
+          borderRadius: 4
         }}
       >
         <Grid
@@ -124,7 +124,7 @@ export const MessagesView = () => {
               color='primary'
               onClick={ handleSendMessage }
               sx={{
-                borderRadius: 3,
+                borderRadius: 4,
                 p: 1,
                 width: {
                   xs: '100%',
