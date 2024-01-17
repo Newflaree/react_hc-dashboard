@@ -5,6 +5,12 @@ export const appTheme = createTheme({
     mode: 'light',
     primary: {
       main: '#1D3B86'
+    },
+    primary: {
+      main: '#1D3B86'
+    },
+    error: {
+      main: '#D32F2F'
     }
   }
 });

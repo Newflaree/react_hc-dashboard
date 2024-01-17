@@ -67,7 +67,10 @@ export const DashboardLayout = ({ children }) => {
         {
           isLoading
             ? <LoadingPage />
-            : <>{ children }</>
+            : <Box className='animate__animated animate__fadeIn'>
+                { children }
+              </Box>
+        
         }
       </Box>
     </Box>

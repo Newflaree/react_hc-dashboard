@@ -89,6 +89,7 @@ export const MessagesView = () => {
               >
                 <MenuItem value='locutor'>Locutor</MenuItem>
                 <MenuItem value='usuario'>Usuario</MenuItem>
+                <MenuItem value='todos'>Todos</MenuItem>
               </Select>
             </FormControl>
           </Grid>
