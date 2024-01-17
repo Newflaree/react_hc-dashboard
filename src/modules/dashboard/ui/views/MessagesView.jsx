@@ -15,9 +15,10 @@ import {
 } from '@mui/material';
 
 
-export const MessagesView = () => {
+export const MessagesView = ({ swals = [] }) => {
   const [ userType, setUserType ] = useState( '' );
   const [ message, setMessage ] = useState( '' );
+  const [ sendEmailSwal ] = swals;
 
   const handleUserTypeChange = ( event ) => {
     setUserType( event.target.value );
@@ -29,6 +30,7 @@ export const MessagesView = () => {
 
   const handleSendMessage = () => {
     console.log( `Enviando mensaje de ${ userType }: ${ message }` );
+    sendEmailSwal();
   }
 
   return (
