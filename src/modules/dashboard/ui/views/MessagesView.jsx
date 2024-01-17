@@ -41,6 +41,7 @@ export const MessagesView = () => {
       <Paper
         elevation={ 8 }
         sx={{ 
+          mt: 4,
           p: {
             xs: 4,
             md: 6
@@ -48,6 +49,10 @@ export const MessagesView = () => {
           width: {
             xs: 'calc( 100vw - 40px )',
             md: 'calc( 1000px - 70px )'
+          },
+          height: {
+            xs: 'calc( 100vh - 100px )',
+            md: 'calc( 100vh - 200px )'
           },
           borderRadius: 4
         }}

@@ -42,7 +42,7 @@ export const testNarratorsData = [
     speciality: 'Trabajo en Alturas',
   },
   {
-    id: 2,
+    id: 8,
     name: 'Locutor 2',
     city: 'Ciudad 2',
     speciality: 'Trabajo en Espacios Confinados',

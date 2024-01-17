@@ -1,1 +1,1 @@
-export * from './testNarratorsData';
+export * from './testData';

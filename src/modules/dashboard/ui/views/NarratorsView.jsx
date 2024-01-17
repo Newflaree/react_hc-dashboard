@@ -15,6 +15,7 @@ import {
   TextField,
   Typography
 } from '@mui/material';
+// Database
 import { testNarratorsData } from '../../../../database';
 
 
@@ -112,6 +113,7 @@ export const NarratorsView = () => {
                         <Button
                           variant='outlined'
                           color='primary'
+                          sx={{ borderRadius: 8 }}
                           onClick={ () => handleViewProfile( id ) }
                         >
                           Ver Perfil
@@ -121,6 +123,7 @@ export const NarratorsView = () => {
                         <Button
                           variant='outlined'
                           color='error'
+                          sx={{ borderRadius: 8 }}
                           onClick={ () => handleViewProfile( id ) }
                         >
                           Eliminar
