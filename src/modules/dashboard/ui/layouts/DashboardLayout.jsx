@@ -60,6 +60,7 @@ export const DashboardLayout = ({ children }) => {
         component='main'
         bgcolor='#E8E8E8'
         sx={{
+          pb: 10,
           height: '100%',
           flexGrow: 1,
         }}
