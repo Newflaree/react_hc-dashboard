@@ -38,14 +38,15 @@ export const NarratorsView = () => {
 
   return (
     <Box
-      height='100vh'
       display='flex'
       alignItems='center'
       justifyContent='center'
+      p={ 4 }
     >
       <Paper
         elevation={ 8 }
         sx={{ 
+          mt: 10,
           p: {
             xs: 4,
             md: 6

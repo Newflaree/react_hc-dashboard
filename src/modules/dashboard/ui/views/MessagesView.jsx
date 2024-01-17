@@ -35,15 +35,15 @@ export const MessagesView = ({ swals = [] }) => {
 
   return (
     <Box
-      height='100vh'
       display='flex'
       alignItems='center'
       justifyContent='center'
+      p={ 4 }
     >
       <Paper
         elevation={ 8 }
         sx={{ 
-          mt: 4,
+          mt: 10,
           p: {
             xs: 4,
             md: 6
@@ -51,10 +51,6 @@ export const MessagesView = ({ swals = [] }) => {
           width: {
             xs: 'calc( 100vw - 40px )',
             md: 'calc( 1000px - 70px )'
-          },
-          height: {
-            xs: 'calc( 100vh - 100px )',
-            md: 'calc( 100vh - 200px )'
           },
           borderRadius: 4
         }}

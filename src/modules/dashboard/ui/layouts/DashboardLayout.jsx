@@ -57,10 +57,10 @@ export const DashboardLayout = ({ children }) => {
       />
 
       <Box
-        height='100vh'
         component='main'
         bgcolor='#E8E8E8'
         sx={{
+          height: '100%',
           flexGrow: 1,
         }}
       >
