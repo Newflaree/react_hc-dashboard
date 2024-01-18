@@ -1,3 +1,4 @@
+export * from './DashboardPaper';
 export * from './Navbar';
 export * from './LoadingPage';
 export * from './SidebarAvatar';

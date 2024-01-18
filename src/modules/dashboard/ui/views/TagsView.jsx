@@ -3,16 +3,16 @@ import {
   Box,
   Typography
 } from '@mui/material';
+// Components
+import { DashboardPaper } from '../components';
+
 
 export const TagsView = () => {
   return (
-    <Box
-      p={ 7 }
-      height='100vh'
-    >
+    <DashboardPaper pageTitle='Gestión de Tags'>
       <Typography variant='h1'>
         TagsView
       </Typography>
-    </Box>
+    </DashboardPaper>
   );
 }

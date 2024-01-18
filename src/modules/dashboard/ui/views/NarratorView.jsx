@@ -3,17 +3,16 @@ import {
   Box,
   Typography
 } from '@mui/material';
+// Components
+import { DashboardPaper } from '../components';
 
 
 export const NarratorView = () => {
   return (
-    <Box
-      p={ 7 }
-      height='100vh'
-    >
+    <DashboardPaper pageTitle='Detalle del Locutor'>
       <Typography variant='h1'>
         NarratorView
       </Typography>
-    </Box>
+    </DashboardPaper>
   );
 }

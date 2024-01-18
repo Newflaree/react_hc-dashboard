@@ -3,17 +3,16 @@ import {
   Box,
   Typography
 } from '@mui/material';
+// Components
+import { DashboardPaper } from '../components';
 
 
 export const UserView = () => {
   return (
-    <Box
-      p={ 7 }
-      height='100vh'
-    >
+    <DashboardPaper pageTitle='Detalle del Usuario'>
       <Typography variant='h1'>
         UserView
       </Typography>
-    </Box>
+    </DashboardPaper>
   );
 }
