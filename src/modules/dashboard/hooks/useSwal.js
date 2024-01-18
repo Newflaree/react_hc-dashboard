@@ -24,10 +24,12 @@ export const useSwal = () => {
     });
   }
 
-  const sendEmailSwal = async () => {
+  const sendEmailSwal = async ( message = '' ) => {
+    console.log( message );
+
     return Swal.fire({
       title: "Sistema de Mensajería",
-      text: "Estás a punto de enviar un correo electrónico de manera masiva.",
+      text: `Estás a punto de enviar un correo electrónico de manera masiva a todos ${ message }`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#1D3B86",
@@ -42,10 +44,11 @@ export const useSwal = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // TODO: 
+        // TODO: Implemented 
+        
         Swal.fire({
           title: "Mensaje enviado",
-          text: 'Es mensaje fue enviado con exito a todos los locutores',
+          text: `Es mensaje fue enviado con exito a todos ${ message }`,
           icon: "success",
           showClass: {
             popup: `

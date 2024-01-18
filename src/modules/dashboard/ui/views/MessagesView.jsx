@@ -29,8 +29,12 @@ export const MessagesView = ({ swals = [] }) => {
   }
 
   const handleSendMessage = () => {
-    console.log( `Enviando mensaje de ${ userType }: ${ message }` );
-    sendEmailSwal();
+    let newMessage = '';
+
+    if ( userType === 'locutor' ) newMessage = 'los locutores';
+    if ( userType === 'usuario' ) newMessage = 'los usuarios';
+    
+    sendEmailSwal( newMessage );
   }
 
   return (
