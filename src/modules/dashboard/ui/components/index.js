@@ -1,4 +1,5 @@
 export * from './DashboardPaper';
+export * from './EmptyTable';
 export * from './Navbar';
 export * from './LoadingPage';
 export * from './SidebarAvatar';

@@ -19,8 +19,14 @@ import {
   TextField,
   Typography
 } from '@mui/material';
+// Components
+import { EmptyTable } from '../components';
 // Database
-import { citiesData, testNarratorsData, specialtiesData } from '../../../../database';
+import {
+  citiesData,
+  testNarratorsData,
+  specialtiesData
+} from '../../../../database';
 
 
 export const NarratorsView = () => {
@@ -189,7 +195,9 @@ export const NarratorsView = () => {
 
               <TableBody>
                 {
-                  filteredByCityAndSpecialty.map( ({ id, name, city, speciality }) => (
+                  filteredByCityAndSpecialty.length < 1 
+                    ? <EmptyTable colSpan={ 5 } />
+                    : filteredByCityAndSpecialty.map( ({ id, name, city, speciality }) => (
                     <TableRow key={ id }>
                       <TableCell>{ name }</TableCell>
                       <TableCell>{ city }</TableCell>
