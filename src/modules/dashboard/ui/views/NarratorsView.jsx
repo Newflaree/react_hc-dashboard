@@ -4,8 +4,12 @@ import { useState } from 'react';
 import {
   Box,
   Button,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
   TableContainer,
   Table,
   TableHead,
@@ -16,12 +20,14 @@ import {
   Typography
 } from '@mui/material';
 // Database
-import { testNarratorsData } from '../../../../database';
+import { citiesData, testNarratorsData, specialtiesData } from '../../../../database';
 
 
 export const NarratorsView = () => {
   const [ searchTerm, setSearchTerm ] = useState( '' );
-  const [ filteredLocutors, setFilteredLocutors ] = useState([]);
+  const [ filteredNarrators, setFilteredNarrators ] = useState( [] );
+  const [ selectedCity, setSelectedCity ] = useState( '' );
+  const [ selectedSpecialty, setSelectedSpecialty ] = useState( '' );
 
   const handleViewProfile = ( narratorId ) => {
     console.log( `Ver perfil del locutor con ID: ${ narratorId }` );
@@ -34,14 +40,40 @@ export const NarratorsView = () => {
   const handleSearch = ( event ) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchTerm( searchTerm ); 
+
+    const filteredNarrators = testNarratorsData.filter(
+      ( narrator ) =>
+        narrator.name.toLowerCase().includes( searchTerm ) ||
+        narrator.city.toLowerCase().includes( searchTerm ) ||
+        narrator.speciality.toLowerCase().includes( searchTerm )
+    )
+
+    setFilteredNarrators( filteredNarrators )
   }
+
+  const handleCityChange = ( event ) => {
+    setSelectedCity( event.target.value );
+  }
+
+  const handleSpecialtyChange = ( event ) => {
+    setSelectedSpecialty( event.target.value );
+  }
+
+  const displayNarrators = searchTerm 
+    ? filteredNarrators
+    : testNarratorsData;
+
+  const filteredByCityAndSpecialty = displayNarrators.filter(
+    ( narrator ) =>
+      ( !selectedCity || narrator.city === selectedCity ) &&
+      ( !selectedSpecialty || narrator.speciality === selectedSpecialty ) 
+  );
 
   return (
     <Box
       display='flex'
       alignItems='center'
       justifyContent='center'
-      p={ 4 }
     >
       <Paper
         elevation={ 8 }
@@ -82,20 +114,71 @@ export const NarratorsView = () => {
           <Grid
             item
             xs={ 12 }
-            mb={ 4 }
           >
             <TextField
               label='Buscar por Nombre, Ciudad o Especialidad del Locutor'
               variant='outlined'
               fullWidth
               margin='normal'
+              value={ searchTerm }
+              onChange={ handleSearch }
             />
           </Grid>
 
-          <TableContainer style={{ maxHeight: 300 }}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+          >
+            <FormControl fullWidth>
+              <InputLabel>Ciudad</InputLabel>
+              <Select
+                value={selectedCity}
+                label='Ciudad'
+                onChange={handleCityChange}
+              >
+                <MenuItem value=''>
+                  <em>Seleccione</em>
+                </MenuItem>
+                {citiesData.map((city) => (
+                  <MenuItem key={city} value={city}>
+                    {city}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            md={6}
+          >
+            <FormControl fullWidth>
+              <InputLabel>Especialidad</InputLabel>
+              <Select
+                value={selectedSpecialty}
+                label='Especialidad'
+                onChange={handleSpecialtyChange}
+              >
+                <MenuItem value=''>
+                  <em>Seleccione</em>
+                </MenuItem>
+                {specialtiesData.map((specialty) => (
+                  <MenuItem key={specialty} value={specialty}>
+                    {specialty}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+
+
+          <TableContainer style={{ maxHeight: 300, minHeight: 300 }}>
             <Table stickyHeader>
               <TableHead>
-                <TableRow>
+                <TableRow >
                   <TableCell>Nombre</TableCell>
                   <TableCell>Ciudad</TableCell>
                   <TableCell>Especialidad</TableCell>
@@ -103,9 +186,10 @@ export const NarratorsView = () => {
                   <TableCell>Eliminar Locutor</TableCell>
                 </TableRow>
               </TableHead>
+
               <TableBody>
                 {
-                  testNarratorsData.map( ({ id, name, city, speciality }) => (
+                  filteredByCityAndSpecialty.map( ({ id, name, city, speciality }) => (
                     <TableRow key={ id }>
                       <TableCell>{ name }</TableCell>
                       <TableCell>{ city }</TableCell>

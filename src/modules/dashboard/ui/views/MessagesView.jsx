@@ -42,7 +42,6 @@ export const MessagesView = ({ swals = [] }) => {
       display='flex'
       alignItems='center'
       justifyContent='center'
-      p={ 4 }
     >
       <Paper
         elevation={ 8 }
