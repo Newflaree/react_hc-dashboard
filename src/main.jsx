@@ -11,18 +11,23 @@ import App from './App.jsx'
 // Globals Styles
 import './styles.css'
 // Context
-import { UiProvider } from './context/ui';
+import {
+  AuthProvider,
+  UiProvider
+} from './context';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UiProvider>
-      <BrowserRouter>
-        <ThemeProvider theme={ appTheme }>
-          <CssBaseline /> 
-          <App />
-        </ThemeProvider>
-      </BrowserRouter>
-    </UiProvider>
+    <AuthProvider>
+      <UiProvider>
+        <BrowserRouter>
+          <ThemeProvider theme={ appTheme }>
+            <CssBaseline /> 
+            <App />
+          </ThemeProvider>
+        </BrowserRouter>
+      </UiProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

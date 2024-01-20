@@ -1,3 +1,5 @@
+//React
+import { useContext } from 'react';
 import {
   Button,
   FormControlLabel,
@@ -5,6 +7,8 @@ import {
   Link,
   TextField
 } from '@mui/material';
+// Context
+import { AuthContext } from '../../../../context';
 
 
 export const AuthLoginView = ({
@@ -14,6 +18,8 @@ export const AuthLoginView = ({
   errors,
   reset,
 }) => {
+  const { authLogin } = useContext( AuthContext );
+
   return (
     <form
       onSubmit={ handleSubmit( onSubmitForm ) }
@@ -64,6 +70,7 @@ export const AuthLoginView = ({
         type='submit'
         fullWidth
         variant='contained'
+        onClick={ authLogin }
         sx={{
           borderRadius: 4,
           p: 1,

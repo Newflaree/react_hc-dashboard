@@ -30,6 +30,8 @@ export const DashboardRoutes = () => {
       <Route path='/narrators/:id' element={ <NarratorPage /> } />
 
       <Route path='/*' element={ <Navigate to='/' /> } />
+      <Route path='*/*' element={ <Navigate to='/auth' /> } />
+
     </Routes>
   );
 }

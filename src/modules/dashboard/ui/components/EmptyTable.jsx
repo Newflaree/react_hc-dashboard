@@ -13,7 +13,9 @@ export const EmptyTable = ({ colSpan }) => {
         colSpan={ colSpan }
         align='center'
       >
-        <Typography variant='subtitle2'>No hay Resultados</Typography>
+        <Typography variant='subtitle2' py={ 10 }>
+          No hay Resultados
+        </Typography>
       </TableCell>
     </TableRow>
   );

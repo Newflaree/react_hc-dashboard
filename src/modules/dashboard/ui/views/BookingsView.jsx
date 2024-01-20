@@ -18,7 +18,7 @@ import {
   Typography
 } from '@mui/material';
 // Components
-import { DashboardPaper } from '../components';
+import { DashboardPaper, EmptyTable } from '../components';
 // Database
 import { testBookingData } from '../../../../database';
 
@@ -143,7 +143,9 @@ export const BookingsView = () => {
           </TableHead>
           <TableBody>
             {
-              sortedReservations.map( ({ 
+              sortedReservations.length < 1 
+                ? <EmptyTable colSpan={ 6 } />
+                : sortedReservations.map( ({ 
                 id,
                 userName,
                 locutorName,
