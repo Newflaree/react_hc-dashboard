@@ -1,5 +1,3 @@
-//React
-import { useContext } from 'react';
 import {
   Button,
   FormControlLabel,
@@ -7,8 +5,6 @@ import {
   Link,
   TextField
 } from '@mui/material';
-// Context
-import { AuthContext } from '../../../../context';
 
 
 export const AuthLoginView = ({
@@ -18,7 +14,6 @@ export const AuthLoginView = ({
   errors,
   reset,
 }) => {
-  const { authLogin } = useContext( AuthContext );
 
   return (
     <form
@@ -29,7 +24,6 @@ export const AuthLoginView = ({
         fullWidth
         label='Correo Electrónico'
         type='email'
-        autoComplete='email'
         autoFocus
         { ...register( 'email', {
           required: 'Este campo es obligatorio'
@@ -43,7 +37,6 @@ export const AuthLoginView = ({
         fullWidth
         label='Contraseña'
         type='password'
-        autoComplete='current-password'
         autoFocus
         { ...register( 'password', {
           required: 'Este campo es obligatorio'
@@ -70,7 +63,6 @@ export const AuthLoginView = ({
         type='submit'
         fullWidth
         variant='contained'
-        onClick={ authLogin }
         sx={{
           borderRadius: 4,
           p: 1,

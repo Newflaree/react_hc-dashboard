@@ -6,6 +6,7 @@ import {
 // React Router Dom
 import {
   useNavigate,
+  Navigate,
   Routes,
   Route
 } from 'react-router-dom';
@@ -20,18 +21,16 @@ import {
 
 export const AppRouter = () => {
   const { isLogged } = useContext( AuthContext );
-  const navigate = useNavigate();
-
-  useEffect( () => {
-    isLogged
-      ? navigate( '/' )
-      : navigate( '/auth' )
-  }, [ isLogged ]);
    
   return (
     <Routes>
-        <Route path='auth/*' element={ <AuthRoutes /> } />
-        <Route path='/*' element={ <DashboardRoutes /> } />
+      {
+        ( !isLogged )
+          ? <Route path='/auth/*' element={ <AuthRoutes /> } />
+          : <Route path='/*' element={ <DashboardRoutes /> } />
+      }
+
+      <Route path='/*' element={ <Navigate to='/auth/login' /> } />
     </Routes>
   );
 }

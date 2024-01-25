@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 
 export const useSwal = () => {
-  const successSwal = ( title, icon ) => {
+  const simpleSwal = ( title, icon ) => {
     return Swal.fire({
       title,
       icon,
@@ -25,8 +25,6 @@ export const useSwal = () => {
   }
 
   const sendEmailSwal = async ( message = '' ) => {
-    console.log( message );
-
     return Swal.fire({
       title: "Sistema de Mensajería",
       text: `Estás a punto de enviar un correo electrónico de manera masiva a todos ${ message }`,
@@ -63,7 +61,7 @@ export const useSwal = () => {
   }
 
   return {
-    successSwal,
+    simpleSwal,
     sendEmailSwal
   };
 }

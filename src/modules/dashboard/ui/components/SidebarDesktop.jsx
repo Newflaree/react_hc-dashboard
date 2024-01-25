@@ -13,6 +13,7 @@ import {
 
 
 export const SidebarDesktop = ({
+  user,
   drawerWidth,
   handleNavigate
 }) => {
@@ -34,7 +35,10 @@ export const SidebarDesktop = ({
       }}
     >
       <List>
-        <SidebarAvatar />
+        <SidebarAvatar
+          avatar={ user.img }
+          name={ user.name }
+        />
 
         <Divider sx={{ m: 2 }}/>
 

@@ -1,11 +1,13 @@
 // React
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 // React Hook Form
 import { useForm } from 'react-hook-form';
 // Layouts
 import { AuthLayout } from '../ui/layouts';
 // Views
 import { AuthLoginView } from '../ui/views';
+// Context
+import { AuthContext } from '../../../context';
 
 
 const resetForm = () => {
@@ -16,6 +18,8 @@ const resetForm = () => {
 }
 
 export const AuthLoginPage = () => {
+  const [ isSubmitting, setIsSubmitting ] = useState( false );
+  const { authLogin } = useContext( AuthContext );
   const {
     register,
     handleSubmit,
@@ -28,11 +32,8 @@ export const AuthLoginPage = () => {
     }
   });
 
-  const [ isSubmitting, setIsSubmitting ] = useState( false );
-
-
-  const onSubmitForm = async ( formData ) => {
-    console.log( formData );
+  const onSubmitForm = ( formData ) => {
+    authLogin( formData.email, formData.password );
   }
 
   return (
@@ -43,7 +44,6 @@ export const AuthLoginPage = () => {
         handleSubmit={ handleSubmit }
         errors={ errors }
         reset={ reset }
-        history
       />
     </AuthLayout>
   );

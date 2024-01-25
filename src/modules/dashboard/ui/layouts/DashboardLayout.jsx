@@ -1,5 +1,6 @@
 // React
 import {
+  useContext,
   useEffect,
   useState
 } from 'react';
@@ -16,6 +17,8 @@ import {
   SidebarDesktop,
   SidebarMobile,
 } from '../components';
+// Context
+import { AuthContext } from '../../../../context';
 
 
 const drawerWidth = 270;
@@ -23,6 +26,7 @@ const drawerWidth = 270;
 export const DashboardLayout = ({ children }) => {
   const [ isLoading, setIsLoading ] = useState( true );
   const navigate = useNavigate();
+  const { user } = useContext( AuthContext );
 
   useEffect( () => {
     loadingControl();
@@ -47,11 +51,13 @@ export const DashboardLayout = ({ children }) => {
       <Navbar />
 
       <SidebarDesktop
+        user={ user }
         drawerWidth={ drawerWidth } 
         handleNavigate={ handleNavigate }
       />
 
       <SidebarMobile
+        user={ user }
         drawerWidth={ drawerWidth } 
         handleNavigate={ handleNavigate }
       />

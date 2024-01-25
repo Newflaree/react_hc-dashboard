@@ -24,6 +24,7 @@ import {
 
 
 export const SidebarMobile = ({
+  user,
   drawerWidth,
   handleNavigate
 }) => {
@@ -43,7 +44,10 @@ export const SidebarMobile = ({
       }}
     >
       <List>
-        <SidebarAvatar />
+        <SidebarAvatar
+          avatar={ user.img }
+          name={ user.name }
+        />
 
         <Divider sx={{ m: 2 }}/>
 

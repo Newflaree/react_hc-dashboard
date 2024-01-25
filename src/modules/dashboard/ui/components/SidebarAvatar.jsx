@@ -6,7 +6,10 @@ import {
 } from '@mui/material';
 
 
-export const SidebarAvatar = () => {
+export const SidebarAvatar = ({
+  avatar = '',
+  name = ''
+}) => {
   return (
     <ListItem
       sx={{
@@ -18,7 +21,7 @@ export const SidebarAvatar = () => {
     >
       <ListItemIcon>
         <img
-          src='https://res.cloudinary.com/newflare/image/upload/v1705381326/demos/hc/hsjnbgecbaaijmftf0vi.png'
+          src={ avatar }
           alt='avatar'
           style={{
             marginBottom: '30px',
@@ -41,7 +44,7 @@ export const SidebarAvatar = () => {
         fontSize={ 20 }
         fontWeight='bold'
       >
-        { 'nombre-de-usuario' }
+        { name }
       </Typography>
     </ListItem>
   );
