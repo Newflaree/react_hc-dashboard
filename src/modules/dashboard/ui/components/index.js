@@ -1,4 +1,6 @@
 export * from './DashboardPaper';
+export * from './DashboardRegionGraph';
+export * from './DashboardTagsPieGraph';
 export * from './EmptyTable';
 export * from './Navbar';
 export * from './LoadingPage';

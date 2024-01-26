@@ -184,7 +184,7 @@ export const BookingsView = () => {
                       variant='outlined'
                       color='error'
                       sx={{ borderRadius: 8 }}
-                      onClick={ () => handleViewProfile( id ) }
+                      onClick={ () => console.log( 'Eliminado' ) }
                     >
                       Eliminar
                     </Button>
