@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 
 
 export const LayoutBackground = ({ children }) => {
-  const imgUrl = 'https://res.cloudinary.com/newflare/image/upload/v1705268137/zondzykpqtssek0eknco.jpg';
+  const imgUrl = 'https://res.cloudinary.com/newflare/image/upload/v1706205941/demos/hc/tb7d1blexryetncshhxp.jpg';
    
   return (
     <Box

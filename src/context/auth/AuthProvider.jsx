@@ -8,7 +8,8 @@ import { appApi } from '../../api';
 
 const AUTH_INITIAL_STATE =	{
   isLogged: false,
-  user: undefined
+  user: undefined,
+  rememberedUser: undefined
 }
 
 
@@ -17,6 +18,13 @@ export const AuthProvider = ({ children }) => {
   const { simpleSwal } = useSwal();
 
   const checkingCredentials = () => {}
+
+  const rememberUser = ( email = '' ) => {
+    dispatch({
+      type: '[AUTH] - Remember',
+      payload: email
+    });
+  }
 
   const authLogin = async ( email = '', password = '' ) => {
     try {
@@ -46,7 +54,8 @@ export const AuthProvider = ({ children }) => {
       value={{
         ...state,
         authLogin,
-        authLogout
+        authLogout,
+        rememberUser
       }}
     >
       { children }

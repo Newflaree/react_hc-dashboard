@@ -8,6 +8,12 @@ export const authReducer = ( state, action ) => {
         user: action.payload
       }
 
+    case '[AUTH] - Remember':
+      return {
+        ...state,
+        remenberedUser: action.payload
+      }
+
     case '[AUTH] - LogOut':
       return {
         ...state,

@@ -16,7 +16,7 @@ export const SidebarAvatar = ({
         mt: 10,
         display: 'flex',
         flexDirection: 'column',
-        textAlign: 'center'
+        textAlign: 'center',
       }}
     >
       <ListItemIcon>
@@ -24,9 +24,9 @@ export const SidebarAvatar = ({
           src={ avatar }
           alt='avatar'
           style={{
-            marginBottom: '30px',
-            width: '100px',
-            height: '100px',
+            marginBottom: '20px',
+            width: '130px',
+            height: '130px',
             borderRadius: '50%'
           }}
         />

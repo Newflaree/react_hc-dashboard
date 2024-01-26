@@ -18,7 +18,7 @@ import {
   Typography
 } from '@mui/material';
 // Components
-import { DashboardPaper } from '../components';
+import { DashboardPaper, EmptyTable } from '../components';
 // Data
 import {
   citiesData,
@@ -162,7 +162,10 @@ export const UsersView = () => {
 
           <TableBody>
             {
-              filteredByCityAndRole.map( ({ id, userName, city, role }) => (
+              filteredByCityAndRole.length < 1
+                ? <EmptyTable colSpan={ 5 } />
+                : filteredByCityAndRole.map( ({ id, userName, city, role }) => (
+                 
                 <TableRow key={ id }>
                   <TableCell>
                     <Typography

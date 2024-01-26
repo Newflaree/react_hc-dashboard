@@ -1,3 +1,8 @@
+// React
+import {
+  useState
+} from 'react';
+// Material UI
 import {
   Button,
   FormControlLabel,
@@ -14,6 +19,7 @@ export const AuthLoginView = ({
   errors,
   reset,
 }) => {
+  const [ remember, setRemember ] = useState( false );
 
   return (
     <form
@@ -54,6 +60,8 @@ export const AuthLoginView = ({
           <input
             type='checkbox'
             name='remenber'
+            checked={ remember }
+            onChange={ () => {} }
           />
         }
         label='Recordarme'
@@ -82,7 +90,10 @@ export const AuthLoginView = ({
           item
           xs
         >
-          <Link href='#' variant='body1'>
+          <Link
+            href='#'
+            variant='body1'
+          >
             ¿Olvidaste tu contraseña?
           </Link>
         </Grid>
