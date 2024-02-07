@@ -57,21 +57,8 @@ const reservationData = [
 export const DashboardView = () => {
   return (
     <DashboardPaper pageTitle='Estadísticas Generales'>
-      <Grid
-        item
-        xs={ 12 }
-        md={ 6 }
-      >
-        <Typography
-          variant='h4'
-          textAlign='center'
-          mb={ 2 }
-        >
-          Locutores y Usuarios por Región
-        </Typography>
-
-        <DashboardRegionGraph />
-      </Grid>
+      { /* Ragion Graph */ }
+      <DashboardRegionGraph />
 
       <Grid
         item

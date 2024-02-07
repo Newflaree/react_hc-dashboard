@@ -17,6 +17,7 @@ import { DashboardPaper, EmptyTable } from '../components';
 // Data
 import { specialtiesData } from '../../../../database';
 
+// TODO: Fix background bottom size
 
 export const TagsView = () => {
   const [ searchTerm, setSearchTerm ] = useState( '' );

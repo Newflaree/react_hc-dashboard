@@ -6,6 +6,7 @@ import { UiContext, uiReducer } from './';
 
 const UI_INITIAL_STATE =	{
   isMenuOpen: false,
+  isSubmitting: false
 }
 
 export const UiProvider = ({ children }) => {
@@ -15,6 +16,10 @@ export const UiProvider = ({ children }) => {
     dispatch({
       type: '[UI] - Toggle Menu'
     });
+  }
+
+  const toggleSubmted = () => {
+
   }
 
   return (

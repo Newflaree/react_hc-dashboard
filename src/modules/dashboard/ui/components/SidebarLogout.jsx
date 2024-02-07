@@ -12,19 +12,19 @@ import { AuthContext } from '../../../../context';
 
 
 export const SidebarLogout = () => {
-  const { authLogout } = useContext( AuthContext );
+  const { authLogOut } = useContext( AuthContext );
 
   return (
     <ListItem
-      onClick={ authLogout }
+      onClick={ authLogOut }
       button
       sx={{
         mt: 4,
         '&.Mui-selected': { backgroundColor: '#E8E8E8' }
       }}
     >
-      <Logout sx={{ mr: 1, color: 'red' }} />
-      <ListItemText primary='Cerrar Sesión' sx={{ color: 'red' }} />
+      <Logout sx={{ mr: 1, color: '#D32F2F' }} />
+      <ListItemText primary='Cerrar Sesión' sx={{ color: '#D32F2F' }} />
     </ListItem>
   );
 }

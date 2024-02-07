@@ -1,61 +1,110 @@
 // React
-import { useReducer } from 'react';
-// Context
-import { AuthContext, authReducer } from './';
-import { useSwal } from '../../modules/dashboard/hooks';
+import {
+  useEffect,
+  useReducer
+} from 'react';
+// Api
 import { appApi } from '../../api';
+// Context
+import {
+  AuthContext,
+  authReducer
+} from './';
 
 
 const AUTH_INITIAL_STATE =	{
-  isLogged: false,
-  user: undefined,
-  rememberedUser: undefined
+  status: 'checking',
+  token: null,
+  user: null,
+  errorMessage: ''
 }
+
 
 
 export const AuthProvider = ({ children }) => {
   const [ state, dispatch ] = useReducer( authReducer, AUTH_INITIAL_STATE );
-  const { simpleSwal } = useSwal();
 
-  const checkingCredentials = () => {}
+  useEffect( () => {
+    checkToken();
+  }, [] );
 
-  const rememberUser = ( email = '' ) => {
+  const checkToken = async () => {
+    try {
+      const token = localStorage.getItem( 'token' );
+
+      if ( !token ) return dispatch({
+        type: '[AUTH] - NotAuthenticated'
+      });
+
+      const resp = await appApi.get( '/auth' );
+
+      if ( resp.status !== 200 ) {
+        return dispatch({
+          type: '[AUTH] - NotAuthenticated'
+        });
+      }
+
+      localStorage.setItem( 'token', resp.data.token );
+
+      dispatch({
+        type: '[AUTH] - SignUp',
+        payload: {
+          token: resp.data.token,
+          user: resp.data.user
+        }
+      });
+    
+    } catch ( error ) {
+    
+    }
+  }
+
+  const authSignIn = async ({ email, password }) => {
+    try {
+      const { data } = await appApi.post( '/admin/login', { email, password } );
+
+      dispatch({
+        type: '[AUTH] - SignUp',
+        payload: {
+          token: data.token,
+          user: data.user
+        }
+      });
+
+      localStorage.setItem( 'token', data.token );
+    
+    } catch ( error ) {
+      const message =
+        error.response.data.message ||
+        error.response.data.errors[0].msg
+
+      dispatch({
+        type: '[AUTH] - AddError',
+        payload: message
+      });
+    }
+  }
+
+  const authLogOut = () => {
+    localStorage.removeItem( 'token' );
     dispatch({
-      type: '[AUTH] - Remember',
-      payload: email
+      type: '[AUTH] - LogOut'
     });
   }
 
-  const authLogin = async ( email = '', password = '' ) => {
-    try {
-      const { data } = await appApi.post( '/admin/login' , { email, password } );
-
-      localStorage.setItem( 'token', data.token )
-
-      dispatch({
-        type: '[AUTH] - LogIn',
-        payload: data.user
-      });
-    } catch ( error ) {
-      const message = error.response.data.message || error.response.data.errors[0].msg;
-
-      simpleSwal( message, 'error' );
-    }
-
-  }
-
-  const authLogout = () => {
-    localStorage.removeItem( 'token' );
-    dispatch({ type: '[AUTH] - LogOut' });
+  const authRemoveError = () => {
+    dispatch({
+      type: '[AUTH] - RemoveError',
+    });
   }
 
   return (
     <AuthContext.Provider
       value={{
         ...state,
-        authLogin,
-        authLogout,
-        rememberUser
+        authSignIn,
+        authLogOut,
+        authRemoveError
       }}
     >
       { children }

@@ -1,15 +1,19 @@
 // React
 import {
-  useState
+  useContext,
+  useState,
 } from 'react';
 // Material UI
 import {
   Button,
+  CircularProgress,
   FormControlLabel,
   Grid,
   Link,
   TextField
 } from '@mui/material';
+// Context
+import { AuthContext } from '../../../../context';
 
 
 export const AuthLoginView = ({
@@ -19,7 +23,12 @@ export const AuthLoginView = ({
   errors,
   reset,
 }) => {
-  const [ remember, setRemember ] = useState( false );
+  const [ isRemember, setIsRemember ] = useState( false );
+  const { status } = useContext( AuthContext );
+
+  const handleRememberChange = () => {
+    setIsRemember( !isRemember );
+  }
 
   return (
     <form
@@ -60,8 +69,8 @@ export const AuthLoginView = ({
           <input
             type='checkbox'
             name='remenber'
-            checked={ remember }
-            onChange={ () => {} }
+            checked={ isRemember }
+            onChange={ handleRememberChange }
           />
         }
         label='Recordarme'
@@ -79,7 +88,12 @@ export const AuthLoginView = ({
           mb: 2
         }}
       >
-        Iniciar Sesión
+        {
+          (status !== 'authenticated')
+            ? 'Iniciar Sesión'
+            : <CircularProgress size={ 24 } />
+        }
+        
       </Button>
 
       <Grid
@@ -91,7 +105,7 @@ export const AuthLoginView = ({
           xs
         >
           <Link
-            href='#'
+            href='/'
             variant='body1'
           >
             ¿Olvidaste tu contraseña?

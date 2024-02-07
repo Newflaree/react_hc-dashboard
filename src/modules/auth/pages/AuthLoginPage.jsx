@@ -1,7 +1,9 @@
 // React
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 // React Hook Form
 import { useForm } from 'react-hook-form';
+// Hooks
+import { useSwal } from '../../dashboard/hooks';
 // Layouts
 import { AuthLayout } from '../ui/layouts';
 // Views
@@ -18,8 +20,13 @@ const resetForm = () => {
 }
 
 export const AuthLoginPage = () => {
-  const [ isSubmitting, setIsSubmitting ] = useState( false );
-  const { authLogin } = useContext( AuthContext );
+  const {
+    authSignIn,
+    errorMessage,
+  } = useContext( AuthContext );
+
+  const { simpleSwal } = useSwal();
+
   const {
     register,
     handleSubmit,
@@ -32,8 +39,19 @@ export const AuthLoginPage = () => {
     }
   });
 
+  useEffect( () => {
+    if ( errorMessage.length === 0 ) return;
+
+    simpleSwal( errorMessage, 'error' );
+
+
+  }, [ errorMessage ] );
+
   const onSubmitForm = ( formData ) => {
-    authLogin( formData.email, formData.password );
+    authSignIn({
+      email: formData.email,
+      password: formData.password
+    });
   }
 
   return (
