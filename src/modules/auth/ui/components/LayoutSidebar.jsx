@@ -39,7 +39,7 @@ export const LayoutSidebar = ({ children }) => {
             md: 'fixed'
           },
           right: 50,
-          height: 'calc( 100vh - 50px )'
+          height: 'calc( 100vh - 70px )'
         }}
       >
         <Box
